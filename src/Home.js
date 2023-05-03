@@ -4,22 +4,23 @@ import { ethers } from "ethers";
 import erc20abi from "./erc20abi.json"
 import Message from "./componant/Message";
 import { allowList, root } from "./functions/allowlist";
+import OpenModal from "./componant/OpenModal";
 
 const Home = () => {
-    const [wallet, SetWallet] = useState('Connect Wallet')
+    const [wallet, SetWallet] = useState('')
     const [claimTokentButton, setClaimTokentButton] = useState('Claim Token')
-    const [isMessage , setIsMessage]= useState('')
-    const [msgVisibility , setSsgVisibility]= useState(false)
-
-    
+    const [isMessage, setIsMessage] = useState('')
+    const [msgVisibility, setSsgVisibility] = useState(false)
 
 
-    const ShowMessage = (msg,error)=>{
-       let setClearTime = setTimeout(()=>{
+
+
+    const ShowMessage = (msg, error) => {
+        let setClearTime = setTimeout(() => {
             setSsgVisibility(false)
-        },6000)
+        }, 6000)
         setSsgVisibility(true)
-        return (<Message messageText = {msg} clear = {setClearTime} error = {error}/>)
+        return (<Message messageText={msg} clear={setClearTime} error={error} />)
     }
 
 
@@ -43,7 +44,7 @@ const Home = () => {
     const checkContractDetails = async (e) => {
 
         try {
-            const data = '0x9f354523397db28993B1a8Ef866BC745d610B027';
+            const data = '0x4FDdBE8E89240478CEe5C4193c883Ff4B5067311';
             const provider = new ethers.providers.Web3Provider(window.ethereum);
 
             const erc20 = new ethers.Contract(data, erc20abi, provider);
@@ -51,16 +52,16 @@ const Home = () => {
             const tokenName = await erc20.name();
             const tokenSymbol = await erc20.symbol();
             let totalSupply = await erc20._totalSupply();
-                totalSupply =  totalSupply.toString()
+            totalSupply = totalSupply.toString()
             const publicClaimStarted = await erc20.isPublicClaimEnabled();
             let totalClaimableToken = await erc20.totalClaimableToken();
-                 totalClaimableToken =  totalClaimableToken.toString()
+            totalClaimableToken = totalClaimableToken.toString()
             let claimedToken = await erc20.claimedToken();
-                 claimedToken =  claimedToken.toString()
+            claimedToken = claimedToken.toString()
             let claimableToken = await erc20.claimableToken();
-                 claimableToken =  claimableToken.toString()
+            claimableToken = claimableToken.toString()
             let AllowClaim = await erc20.AllowClaim();
-                AllowClaim =  AllowClaim.toString()
+            AllowClaim = AllowClaim.toString()
 
 
 
@@ -77,12 +78,12 @@ const Home = () => {
             });
         } catch (err) {
 
-            if(err.error != undefined){
-                setIsMessage(ShowMessage(err.data.message,true))
-            }else{
+            if (err.error != undefined) {
+                setIsMessage(ShowMessage(err.data.message, true))
+            } else {
                 console.log(err)
             }
-           
+
         }
 
     };
@@ -101,40 +102,48 @@ const Home = () => {
                 balance: String(balance)
             });
         } catch (err) {
-            if(err.data != undefined){
-                setIsMessage(ShowMessage(err.data.message,true))
-            }else{
+            if (err.data != undefined) {
+                setIsMessage(ShowMessage(err.data.message, true))
+            } else {
                 console.log(err)
             }
 
         }
 
     };
-
+    console.log(allowList('0xA4915ab737a25dAb9226bE0B77A6Bf693fc19CCA'))
+    console.log(('0xA4915ab737a25dAb9226bE0B77A6Bf693fc19CCA'))
     const claimToken = async () => {
-        setClaimTokentButton('Processing....')
-        let data = allowList(wallet)
-        try {
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            await provider.send("eth_requestAccounts", []);
-            const signer = await provider.getSigner();
-            const erc20 = new ethers.Contract(contractInfo.address, erc20abi, signer);
-            let check = await erc20.claim(data[0], data[1]);
-            console.log(check)
-            setIsMessage(ShowMessage(check.hash,false))
-        } catch (err) {
-            if(err.data != undefined){
-                setIsMessage(ShowMessage(err.data.message,true))
-            }else{
-                console.log(err)
+        if(!wallet==''){
+            setClaimTokentButton('Processing....')
+            let data = allowList(wallet)
+            try {
+                const provider = new ethers.providers.Web3Provider(window.ethereum);
+                await provider.send("eth_requestAccounts", []);
+                const signer = await provider.getSigner();
+                const erc20 = new ethers.Contract(contractInfo.address, erc20abi, signer);
+                let check = await erc20.claim(data[0], data[1]);
+                console.log(check)
+                setIsMessage(ShowMessage(check.hash, false))
+            } catch (err) {
+                if (err.data != undefined) {
+                    setIsMessage(ShowMessage(err.data.message, true))
+                } else {
+                    console.log(err)
+                }
             }
+            setClaimTokentButton('Claim Token')
+        }else{
+
+            setIsMessage(ShowMessage('Connect Your Wallet', true))
         }
-        setClaimTokentButton('Claim Token')
+      
     }
     useEffect(() => {
         checkIfAccountChanged(SetWallet)
         checkContractDetails()
         getMyBalance()
+        walletConnect(SetWallet)
     }, [wallet]);
 
     useEffect(() => {
@@ -143,8 +152,8 @@ const Home = () => {
     }, [])
 
 
-    console.log(contractInfo,'contractInfo')
-    console.log(isMessage,'isMessage')
+    console.log(contractInfo, 'contractInfo')
+    console.log(isMessage, 'isMessage')
     return (
         <>
 
@@ -202,22 +211,22 @@ const Home = () => {
                         <div className="site-menu">
                             <ul className="menueffect">
                                 <li>
-                                    <a href="index-2.html">Home</a>
+                                    <a href="#">Home</a>
                                 </li>
                                 <li>
-                                    <a href="about-us.html">About Us</a>
+                                    <a href="#">About Us</a>
                                 </li>
 
                                 <li>
-                                    <a href="blog.html">Blog</a>
+                                    <a href="#">Blog</a>
                                 </li>
                                 <li>
-                                    <a href="contact-us.html">Contact</a>
+                                    <a href="#">Contact</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <small>© 2023 - Cryptoce</small>{" "}
+                    <small>© 2023 - ArbMonke</small>{" "}
                 </div>
             </aside>
             <nav className="navbar">
@@ -233,17 +242,17 @@ const Home = () => {
                     <div className="site-menu">
                         <ul className="menueffect">
                             <li>
-                                <a href="index-2.html">Home</a>
+                                <a href="#">Home</a>
                             </li>
                             <li>
-                                <a href="about-us.html">About Us</a>
+                                <a href="#">About Us</a>
                             </li>
 
                             <li>
-                                <a href="blog.html">Blog</a>
+                                <a href="#">Blog</a>
                             </li>
                             <li>
-                                <a href="contact-us.html">Contact</a>
+                                <a href="#">Contact</a>
                             </li>
                         </ul>
                     </div>
@@ -252,14 +261,24 @@ const Home = () => {
                         <span /> <span /> <span />{" "}
                     </div>
                     <div className="navbar-button " onClick={() => walletConnect(SetWallet)}>
+                        {
+                            wallet == '' ? <a href="#">Connect Wallet</a> : (
 
-                        <a href="#">{wallet}</a>
+
+                                    <a href="#">{wallet.split('').map((data, index) => index < 5 ? data : index > 5 && index < 9 ? '.' : index > 36 ? data : null)}</a>
+
+                            )
+                        }
+
+
+
                     </div>
                 </div>
             </nav>
             {/*Banner Effect Section*/}
             <section className="banner-sc">
-               { msgVisibility?isMessage:null}
+                {msgVisibility ? isMessage : null}
+
                 <div className="h-yazi-ozel h-yazi-margin-ozel"></div>
                 <div className="tablo">
                     <div className="tablo--1-ve-2 wow fade">
@@ -373,7 +392,17 @@ const Home = () => {
 
 
 
-
+<section className="charts-alani">
+                <h2 className="h2-baslik-hizmetler-21 wow fadeInUp" data-wow-delay="0.5s">
+                    Token Charts
+                </h2>
+                <div className="bosluk3" />
+                <div className="tablo-infobox wow fadeInUp" data-wow-delay="0.6s">
+                    <div className="tablo--1-ve-2">
+                        <div className="livecoinwatch-widget-3" />
+                    </div>
+                </div>
+            </section>
 
 
 
@@ -401,23 +430,23 @@ const Home = () => {
                             <div className="footer__menu wow fadeInUp" data-wow-delay="0.5s">
                                 <ul className="footer__list">
                                     <li className="footer__item">
-                                        <a href="index-2.html" className="footer__link">
+                                        <a href="#" className="footer__link">
                                             Home Page
                                         </a>
                                     </li>
                                     <li className="footer__item">
-                                        <a href="about-us.html" className="footer__link">
+                                        <a href="#" className="footer__link">
                                             About Us
                                         </a>
                                     </li>
 
                                     <li className="footer__item">
-                                        <a href="blog.html" className="footer__link">
+                                        <a href="#" className="footer__link">
                                             Blog
                                         </a>
                                     </li>
                                     <li className="footer__item">
-                                        <a href="contact-us.html" className="footer__link">
+                                        <a href="#" className="footer__link">
                                             Contact
                                         </a>
                                     </li>

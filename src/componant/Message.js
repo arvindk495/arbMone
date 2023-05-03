@@ -31,7 +31,7 @@ export default function Message(props) {
         
         <Alert onClose={handleClose} severity={!props.error?"success":"error"} sx={{ width: '100%' }}>
             {
-                !props.error?(<a target='_blank' href={'https://goerli-rollup-explorer.arbitrum.io/tx/'+message}>{message}</a>):{message}
+                !props.error?(<a target='_blank' href={'https://goerli-rollup-explorer.arbitrum.io/tx/'+message}>{message}</a>):message
             }
           
         </Alert>

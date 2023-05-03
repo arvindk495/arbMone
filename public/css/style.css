@@ -11966,7 +11966,7 @@ h2.head {
 
 li.countdown1 {
   display: inline-block;
-  font-size: 1.5em;
+  font-size: 1em;
   list-style-type: none;
   text-transform: uppercase;
   text-align: center;
@@ -11985,7 +11985,7 @@ li.countdown1 span {
 
 li.countdown2 {
   display: inline-block;
-  font-size: 1.5em;
+  font-size: 1em;
   list-style-type: none;
   text-transform: uppercase;
   text-align: center;
@@ -12004,7 +12004,7 @@ li.countdown2 span {
 
 li.countdown3 {
   display: inline-block;
-  font-size: 1.5em;
+  font-size: 1em;
   list-style-type: none;
   text-transform: uppercase;
   text-align: center;
@@ -12023,7 +12023,7 @@ li.countdown3 span {
 
 li.countdown4 {
   display: inline-block;
-  font-size: 1.5em;
+  font-size: 1em;
   list-style-type: none;
   text-transform: uppercase;
   text-align: center;
@@ -12341,7 +12341,7 @@ li.countdown4 span {
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 5;
+  z-index: 56;
   position: fixed;
   background: #000644; }
   .navbar .logo {

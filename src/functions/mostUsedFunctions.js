@@ -23,7 +23,7 @@ export const checkIfAccountChanged = async (SetWallet) => {
         if(accounts[0]){
             SetWallet(accounts[0]);
         }else{
-            SetWallet('Connect Wallet');
+            SetWallet('');
         }
         
       });
