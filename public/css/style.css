@@ -11962,7 +11962,9 @@ button[type="submit"] {
 
 h2.head {
   font-weight: normal;
-  line-height: 5rem; }
+  line-height: 5rem;
+color: white;
+}
 
 li.countdown1 {
   display: inline-block;
@@ -16351,12 +16353,13 @@ font-weight: bold;
 
 
 .containername {
-  max-width: 800px;
+  max-width: 930px;
   margin: 0 auto;
   padding: 2rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #152b3c;
+  background-color: #0a0a3b;
   color: #fff;
+  border-radius: 50px;
 }
 
 .containername .title {
@@ -16392,7 +16395,7 @@ font-weight: bold;
 }
 
 .containername .legend-color--blue {
-  background-color: #2C3E50;
+  background-color: #2890f2;
 }
 
 .containername .legend-color--green {
@@ -16408,7 +16411,7 @@ font-weight: bold;
 }
 
 .containername .legend-label {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .containername .pie-chart__chart {
@@ -16417,7 +16420,8 @@ font-weight: bold;
   height: 250px;
   margin-left: 2rem;
   border-radius: 50%;
-  background-color: #1E3645;
+  background-color: #2890f2;
+  border: 2px solid white;
 }
 
 .containername .slice {
@@ -16432,23 +16436,27 @@ font-weight: bold;
 }
 
 .containername .slice--blue {
-  background-color: #2C3E50;
+  background-color: #2890f2;
   transform: rotate(0deg);
+  
 }
 
 .containername .slice--green {
   background-color: #27AE60;
   transform: rotate(45deg);
+ 
 }
 
 .containername .slice--orange {
   background-color: #F39C12;
   transform: rotate(90deg);
+  
 }
 
 .containername .slice--red {
   background-color: #E74C3C;
   transform: rotate(135deg);
+  
 }
 
 .containername .tokenDescription {
