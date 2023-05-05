@@ -10,8 +10,8 @@ export const root = ()=>{
     const leaves = addresses.map(x => keccak256(x))
     const tree = new MerkleTree(leaves, keccak256, { sortPairs: true })
     const buf2hex = x => '0x' + x.toString('hex')
-    console.log(buf2hex(tree.getRoot()))
-    console.log('root')
+    // console.log(buf2hex(tree.getRoot()))
+    // console.log('root')
 
 }
 

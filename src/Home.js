@@ -142,9 +142,9 @@ const Home = () => {
     }
     useEffect(() => {
         checkIfAccountChanged(SetWallet)
-        checkContractDetails()
-        getMyBalance()
-        walletConnect(SetWallet)
+        //checkContractDetails()
+       // getMyBalance()
+       // walletConnect(SetWallet)
     }, [wallet]);
 
     useEffect(() => {
