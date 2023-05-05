@@ -9,11 +9,11 @@ const Tokenomics = () => {
         <div className="pie-chart__legend">
         <div className="legend-item">
             <span className="legend-color legend-color--red"></span>
-            <span className="legend-label">Red (50%)</span>
+            <span className="legend-label">Red (70%)</span>
           </div>
           <div className="legend-item">
             <span className="legend-color legend-color--blue"></span>
-            <span className="legend-label">Blue (30%)</span>
+            <span className="legend-label">Blue (10%)</span>
           </div>
           <div className="legend-item">
             <span className="legend-color legend-color--green"></span>
@@ -46,7 +46,7 @@ const Tokenomics = () => {
       </div>
       <p className="tokenDescription">Token supply: 210,000,000,000,000,000</p>
       <p className="tokenDescription">Initial circulating supply: 210,000,000,000,000,000</p>
-      <p className="tokenDescription">Token distribution: Private sale (10%), Public sale (30%), Development (10%), Reward (50%)</p>
+      <p className="tokenDescription">Token distribution: Private sale (10%), Dex & Cex (10%), Development (10%), Airdrop (70%)</p>
     </div>
   );
 };
