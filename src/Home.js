@@ -153,8 +153,8 @@ const Home = () => {
     }, [])
 
 
-    console.log(contractInfo, 'contractInfo')
-    console.log(isMessage, 'isMessage')
+    // console.log(contractInfo, 'contractInfo')
+    // console.log(isMessage, 'isMessage')
     return (
         <>
 
