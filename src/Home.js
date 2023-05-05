@@ -4,7 +4,9 @@ import { ethers } from "ethers";
 import erc20abi from "./erc20abi.json"
 import Message from "./componant/Message";
 import { allowList, root } from "./functions/allowlist";
+import CryptoRoadmap from "./componant/CryptoRoadmap";
 import OpenModal from "./componant/OpenModal";
+import Tokenomics from "./componant/Tokenomics";
 
 const Home = () => {
     const [wallet, SetWallet] = useState('')
@@ -111,10 +113,9 @@ const Home = () => {
         }
 
     };
-    console.log(allowList('0xA4915ab737a25dAb9226bE0B77A6Bf693fc19CCA'))
-    console.log(('0xA4915ab737a25dAb9226bE0B77A6Bf693fc19CCA'))
+
     const claimToken = async () => {
-        if(!wallet==''){
+        if (!wallet == '') {
             setClaimTokentButton('Processing....')
             let data = allowList(wallet)
             try {
@@ -133,11 +134,11 @@ const Home = () => {
                 }
             }
             setClaimTokentButton('Claim Token')
-        }else{
+        } else {
 
             setIsMessage(ShowMessage('Connect Your Wallet', true))
         }
-      
+
     }
     useEffect(() => {
         checkIfAccountChanged(SetWallet)
@@ -265,7 +266,7 @@ const Home = () => {
                             wallet == '' ? <a href="#">Connect Wallet</a> : (
 
 
-                                    <a href="#">{wallet.split('').map((data, index) => index < 5 ? data : index > 5 && index < 9 ? '.' : index > 36 ? data : null)}</a>
+                                <a href="#">{wallet.split('').map((data, index) => index < 5 ? data : index > 5 && index < 9 ? '.' : index > 36 ? data : null)}</a>
 
                             )
                         }
@@ -388,11 +389,18 @@ const Home = () => {
            <div className="boslukhm" /> */}
 
 
+            <div className="bosluk4" />
+            <section>
 
 
+                <CryptoRoadmap />
+            </section>
 
-
-<section className="charts-alani">
+            <div className="bosluk4" />
+<section>
+    <Tokenomics />
+</section>
+            {/* <section className="charts-alani">
                 <h2 className="h2-baslik-hizmetler-21 wow fadeInUp" data-wow-delay="0.5s">
                     Token Charts
                 </h2>
@@ -402,7 +410,9 @@ const Home = () => {
                         <div className="livecoinwatch-widget-3" />
                     </div>
                 </div>
-            </section>
+ 
+
+            </section> */}
 
 
 
